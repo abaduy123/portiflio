@@ -1,0 +1,35 @@
+<div class="bg-[#001122] py-12 text-white flex flex-col justify-around px-8 md:flex-row" id="contact">
+    <div class="flex flex-col">
+        <h2 class="text-4xl font-bold mb-4 text-center md:text-left">Let's Talk?</h2>
+        <p class="text-center md:text-left">If you have any question, proposal, or just want to <br> chat, feel free to get in touch</p>
+        <a href="mailto:dgikpp@gmail.com" class="mt-6 px-16 py-4 border text-center border-[#162C42] rounded-md self-center md:self-stretch">
+            <fa-icon [icon]="faEnvelope" class="text-lg mr-2"></fa-icon>
+            Email
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=966578932055&text&type=phone_number&app_absent=0" class="mt-6 px-12 py-4 border text-center border-[#162C42] rounded-md self-center md:self-stretch">
+            <fa-icon [icon]="faWhatsapp" class="text-lg mr-2"></fa-icon>
+            Whatsapp
+        </a>
+
+    </div>
+    <span class="border-l border-[#162C42]"></span>
+    <form class="flex flex-col gap-4 mt-6" [formGroup]="userEmails">
+        <input  type="text" name="name" placeholder="Name" class="bg-[#162C42] border-gray-300 rounded-xl px-4 py-2 text-white" formControlName = "cName">
+        <input  type="email" formControlName="Email"  name="email" placeholder="Email" class="bg-[#162C42] border-gray-300 rounded-xl px-4 py-2 text-white" formControlName = "cEmail" >
+        <textarea   name="message" cols="30" rows="10" placeholder="Message"
+            class="bg-[#162C42] border-gray-300 rounded-xl px-4 py-2 text-white resize-none" formControlName = "cMessage" 
+        ></textarea>
+        <input (click)="sendEmail()" type="submit" value="Send Massage" class="border border-white rounded-full px-4 py-2 text-white self-start cursor-pointer">
+    </form>
+    <div class="text-green-500 w-20% mt-5" *ngIf="isSent"> 
+        <fa-icon [icon]="faCheckCircle" class="text-4xl"></fa-icon>
+        <p>Message Sent</p>
+
+    </div>
+    <div class="text-red-500 w-20% mt-5" *ngIf="err"> 
+        <fa-icon [icon]="faXmarkCircle" class="text-4xl"></fa-icon>
+        <p>Message is not Sent</p>
+
+    </div>
+
+</div>
